@@ -1,8 +1,20 @@
-= sexy_to_param
+sexy_to_param
+=============
 
-Description goes here.
+to_param may need to escape strings. sexy_to_param escapes it automatically.
 
-== Contributing to sexy_to_param
+Example
+-------
+
+    class Article < ActiveRecord::Base
+      sexy_to_param :title
+    end
+
+    a = Article.first #=> #<Article id:1 title:"about #github">
+    a.to_param #=> "1-github"
+
+Contributing to sexy_to_param
+-----------------------------
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -12,7 +24,8 @@ Description goes here.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+Copyright
+---------
 
 Copyright (c) 2011 holysugar. See LICENSE.txt for
 further details.

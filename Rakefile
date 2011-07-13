@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "sexy_to_param"
   gem.homepage = "http://github.com/holysugar/sexy_to_param"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{methods when using to_param}
+  gem.description = %Q{methods when using to_param}
   gem.email = "holysugar@gmail.com"
   gem.authors = ["holysugar"]
   # dependencies defined in Gemfile
