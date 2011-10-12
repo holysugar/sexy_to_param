@@ -15,6 +15,8 @@ describe Article do
     setup_db
     Article.create(:slug => "myslug", :title => "/About @twitter and #github")
     Article.create(:slug => "japanese", :title => "日本語")
+    Article.create(:slug => nil, :title => 'nilslug')
+                   
   }
   after(:all) { teardown_db }
 
@@ -25,13 +27,18 @@ describe Article do
     its(:to_param) { should == "1-myslug" }
   end
 
+  context "when slug is nil" do
+    subject { Article.find_by_title('nilslug') }
+    its(:to_param) { should == "3" }
+  end
+
   context "with column name option" do
     subject { ArticleUsingTitle.first }
     its(:to_param) { should == "1-About-twitter-and-github" }
   end
 
   context "needs to escape, such as Japanese letters" do
-    subject { ArticleUsingTitle.last }
+    subject { ArticleUsingTitle.find_by_slug('japanese') }
     its(:to_param) { should == "2-%E6%97%A5%E6%9C%AC%E8%AA%9E" }
   end
 

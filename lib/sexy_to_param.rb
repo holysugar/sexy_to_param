@@ -7,8 +7,13 @@ module SexyToParam
     def sexy_to_param(column = :slug)
       define_method(:to_param) {
         if id
-          param_string = SexyToParam.escape(send(column))
-          "#{id}-#{param_string}"
+          slug = send(column)
+          if slug.present?
+            param_string = SexyToParam.escape(send(column))
+            "#{id}-#{param_string}"
+          else
+            id.to_s
+          end
         end
       }
     end
