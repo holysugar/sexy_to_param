@@ -9,8 +9,7 @@ module SexyToParam
         if id
           slug = send(column)
           if slug.present?
-            param_string = SexyToParam.escape(send(column))
-            "#{id}-#{param_string}"
+            "%s-%s" % [id ,SexyToParam.escape(slug)]
           else
             id.to_s
           end
